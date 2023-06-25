@@ -5,25 +5,32 @@ import { addData } from "../Store/CounterSlice";
 import LoadJsonData from "./LoadJsonData";
 const TextComponent = () => {
   const [textValue, setTextValue] = useState("");
+  // const [isError, setIsError] = useState(false);
   const dispatch = useDispatch();
 
-  const handleErrorShow = () => {
-    try {
-      var parsedData = JSON.parse(textValue);
-    } catch (error) {
-      textValue && alert("invalid json");
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      try {
+        var parsedData = JSON.parse(textValue);
+      } catch (error) {
+        console.log(error);
+      }
+      dispatch(addData(parsedData));
     }
-    dispatch(addData(parsedData));
-  };
+  });
+
+  // useState(() => {
+  // isError == true && alert("Invalid JSON");
+  // }, [isError]);
 
   // callback function to store url data
   const handleUrlData = (data) => {
     setTextValue(JSON.stringify(data));
   };
 
-  useEffect(() => {
-    handleErrorShow();
-  }, [textValue]);
+  // useEffect(() => {
+  //   handleErrorShow();
+  // }, [textValue]);
 
   return (
     <Box bg={"#f9f9f9"}>

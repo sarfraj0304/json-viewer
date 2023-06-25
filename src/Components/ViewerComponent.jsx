@@ -57,7 +57,7 @@ const ViewerComponent = () => {
   };
   return (
     <Box>
-      {data ? (
+      {data?.length ? (
         showParsedData(Object.entries(out))
       ) : (
         <Box
