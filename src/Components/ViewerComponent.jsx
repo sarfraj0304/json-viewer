@@ -1,5 +1,5 @@
-import { Box, Button, Heading, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { Box, Heading } from "@chakra-ui/react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { MdDataArray, MdDataObject } from "react-icons/md";
 import { BsSquareFill } from "react-icons/bs";

@@ -1,10 +1,8 @@
 import { Box, Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 import ViewerComponent from "./ViewerComponent";
 import TextComponent from "./TextComponent";
-import { useSelector } from "react-redux";
 const JsonViewer = () => {
-  const { data } = useSelector((state) => state.data);
   return (
     <Box>
       <Tabs defaultIndex={1} variant="enclosed" bg={"#eaeaea"}>

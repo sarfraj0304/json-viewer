@@ -68,7 +68,6 @@ const LoadJsonData = ({ handleUrlData }) => {
               colorScheme="blue"
               mr={3}
               onClick={() => {
-                // dispatch(get)
                 handleSubmit();
                 onClose();
               }}
