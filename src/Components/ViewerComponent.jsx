@@ -9,7 +9,7 @@ const ViewerComponent = () => {
   const { data, rawData } = useSelector((state) => state.data);
 
   //   checking that data is type of array or not
-  console.log(rawData);
+  // console.log(rawData);
   let temp = rawData?.length && JSON.parse(rawData);
   let out = rawData?.length
     ? Array.isArray(temp)
@@ -18,7 +18,8 @@ const ViewerComponent = () => {
     : Array.isArray(data)
     ? [data]
     : data;
-  console.log(out);
+
+  // console.log(out);
   // var out = null;
   // if (rawData?.length) {
   //   out = Array.isArray(temp) ? [temp] : temp;

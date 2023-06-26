@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addData, addRawData } from "../Store/CounterSlice";
 import LoadJsonData from "./LoadJsonData";
+
 const TextComponent = () => {
   const [textValue, setTextValue] = useState();
+  const [copy, setCopy] = useState();
   // const [isError, setIsError] = useState(false);
   const dispatch = useDispatch();
 
@@ -20,7 +22,7 @@ const TextComponent = () => {
       // dispatch(addRawData(textValue));
     }
   });
-  console.log(textValue);
+  // console.log(textValue);
 
   // const handleConvert = () => {
   // try {
@@ -57,6 +59,17 @@ const TextComponent = () => {
     setTextValue(JSON.stringify(JSON.parse(textValue), null, 0));
   };
 
+  // Handle copy
+  const handleCopy = () => {
+    setCopy(textValue);
+  };
+
+  // HandlePaste
+  const handlePaste = () => {
+    // setTextValue(prev=>[...prev,copy])
+    setTextValue(textValue + copy);
+  };
+
   return (
     <Box bg={"#f9f9f9"}>
       <Box p={2}>
@@ -80,6 +93,7 @@ const TextComponent = () => {
             <Text
               cursor={"pointer"}
               p={"5px"}
+              onClick={handlePaste}
               _hover={{
                 boxShadow:
                   "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
@@ -90,6 +104,7 @@ const TextComponent = () => {
             <Text
               cursor={"pointer"}
               p={"5px"}
+              onClick={handleCopy}
               _hover={{
                 boxShadow:
                   "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
