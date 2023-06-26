@@ -10,8 +10,7 @@ const HandleToggleShow = ({ children }) => {
         onClick={() => setShow(!show)}
       />
     );
-  }
-  if (show == true) {
+  } else {
     return (
       <>
         <HiMinus
