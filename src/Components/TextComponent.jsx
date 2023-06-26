@@ -5,7 +5,7 @@ import { addData, addRawData } from "../Store/CounterSlice";
 import LoadJsonData from "./LoadJsonData";
 const TextComponent = () => {
   const [textValue, setTextValue] = useState();
-  const [isError, setIsError] = useState(false);
+  // const [isError, setIsError] = useState(false);
   const dispatch = useDispatch();
 
   document.addEventListener("keydown", (event) => {
@@ -46,6 +46,11 @@ const TextComponent = () => {
   // useEffect(() => {
   //   handleErrorShow();
   // }, [textValue]);
+
+  // Handle format the data
+  const handleFormat = () => {
+    setTextValue(JSON.stringify(JSON.parse(textValue), null, 4));
+  };
 
   return (
     <Box bg={"#f9f9f9"}>
@@ -91,6 +96,7 @@ const TextComponent = () => {
             <Text
               cursor={"pointer"}
               p={"5px"}
+              onClick={handleFormat}
               _hover={{
                 boxShadow:
                   "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",

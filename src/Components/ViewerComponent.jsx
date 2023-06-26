@@ -58,7 +58,8 @@ const ViewerComponent = () => {
                 {value.map((el, i) =>
                   typeof el === "object"
                     ? showParsedData([["", el]])
-                    : showParsedData([[i, el]])
+                    : // showParsedData(Object.entries([el]))
+                      showParsedData([[i, el]])
                 )}
               </HandleToggleShow>
             ) : typeof value === "object" ? (
