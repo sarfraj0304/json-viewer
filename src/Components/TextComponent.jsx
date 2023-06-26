@@ -52,6 +52,11 @@ const TextComponent = () => {
     setTextValue(JSON.stringify(JSON.parse(textValue), null, 4));
   };
 
+  //  Handle White Space
+  const handleWhiteSpace = () => {
+    setTextValue(JSON.stringify(JSON.parse(textValue), null, 0));
+  };
+
   return (
     <Box bg={"#f9f9f9"}>
       <Box p={2}>
@@ -107,6 +112,7 @@ const TextComponent = () => {
             <Text
               cursor={"pointer"}
               p={"5px"}
+              onClick={handleWhiteSpace}
               _hover={{
                 boxShadow:
                   "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
