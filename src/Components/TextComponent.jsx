@@ -66,7 +66,6 @@ const TextComponent = () => {
 
   // HandlePaste
   const handlePaste = () => {
-    // setTextValue(prev=>[...prev,copy])
     setTextValue(textValue + copy);
   };
 
