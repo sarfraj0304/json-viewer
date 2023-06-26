@@ -2,6 +2,7 @@ import React from "react";
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   data: [],
+  rawData: [],
 };
 
 export const CounterSlice = createSlice({
@@ -11,9 +12,12 @@ export const CounterSlice = createSlice({
     addData: (state, action) => {
       state.data = action.payload;
     },
+    addRawData: (state, action) => {
+      state.rawData = action.payload;
+    },
   },
 });
 
-export const { addData } = CounterSlice.actions;
+export const { addData, addRawData } = CounterSlice.actions;
 
 export default CounterSlice.reducer;

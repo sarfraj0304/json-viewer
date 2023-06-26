@@ -6,14 +6,32 @@ import { BsSquareFill } from "react-icons/bs";
 import HandleToggleShow from "./handleToggleShow";
 
 const ViewerComponent = () => {
-  const { data } = useSelector((state) => state.data);
+  const { data, rawData } = useSelector((state) => state.data);
 
   //   checking that data is type of array or not
-  let out = Array.isArray(data) ? [data] : data;
+  console.log(rawData);
+  let temp = rawData?.length && JSON.parse(rawData);
+  let out = rawData?.length
+    ? Array.isArray(temp)
+      ? [temp]
+      : temp
+    : Array.isArray(data)
+    ? [data]
+    : data;
+  console.log(out);
+  // var out = null;
+  // if (rawData?.length) {
+  //   out = Array.isArray(temp) ? [temp] : temp;
+  // }
+  // if (data?.length) {
+  //   let temp1 = JSON.parse(data);
+  //   out = Array.isArray(temp1) ? [temp1] : temp1;
+  // }
 
   const showParsedData = (data) => {
     // checking datatype Array or Objects
     return data.map(([key, value], i) => {
+      console.log(key, value);
       const checkType = Array.isArray(value) ? (
         <MdDataArray fontSize={"25px"} />
       ) : typeof value === "object" ? (
@@ -57,7 +75,7 @@ const ViewerComponent = () => {
   };
   return (
     <Box>
-      {data?.length ? (
+      {rawData?.length ? (
         showParsedData(Object.entries(out))
       ) : (
         <Box

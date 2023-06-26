@@ -1,23 +1,38 @@
-import { Box, Text, Textarea } from "@chakra-ui/react";
+import { Box, Button, Text, Textarea } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addData } from "../Store/CounterSlice";
+import { addData, addRawData } from "../Store/CounterSlice";
 import LoadJsonData from "./LoadJsonData";
 const TextComponent = () => {
-  const [textValue, setTextValue] = useState("");
-  // const [isError, setIsError] = useState(false);
+  const [textValue, setTextValue] = useState();
+  const [isError, setIsError] = useState(false);
   const dispatch = useDispatch();
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       try {
-        var parsedData = JSON.parse(textValue);
+        JSON.parse(textValue);
+        dispatch(addRawData(textValue));
       } catch (error) {
         console.log(error);
+        dispatch(addRawData([]));
       }
-      dispatch(addData(parsedData));
+      // dispatch(addRawData(textValue));
     }
   });
+  console.log(textValue);
+
+  // const handleConvert = () => {
+  // try {
+  //   JSON.parse(textValue);
+  //   console.log("converted");
+  //   dispatch(addRawData(textValue));
+  // } catch (error) {
+  //   console.log(error);
+  //   dispatch(addRawData([]));
+  // }
+  // isError == false && dispatch(addRawData(textValue));
+  // };
 
   // useState(() => {
   // isError == true && alert("Invalid JSON");
@@ -129,9 +144,10 @@ const TextComponent = () => {
       <Textarea
         value={textValue}
         onChange={(e) => setTextValue(e.target.value)}
-        height={"500px"}
+        height={"300px"}
         placeholder="Paste the JSON code here"
       ></Textarea>
+      {/* <Button onClick={handleConvert}>Convert Data</Button> */}
     </Box>
   );
 };
